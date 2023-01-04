@@ -1,0 +1,29 @@
+try:
+    k_b = int(input("Введите количество билетов: "))
+    if k_b < 0:
+        raise ValueError()
+except ValueError as e:
+    print("Неверно указано количество билетов!")
+else:
+    age = {}
+    for i in range(1, k_b + 1):
+        try:
+            age[i] = int(input("Введите возраст посетителя: "))
+            if age[i] <= 0:
+                print("Неверно указан возрaст!")
+                break
+        except ValueError as e:
+            print("Неверно указан возрaст!")
+    person_age = list(age.values())
+    price_ = 0
+    for p in person_age:
+        if p < 18:
+            price_ = price_ + 0
+        elif 18 <= p <= 25:
+            price_ = price_ + 990
+        else:
+            price_ = price_ + 1390
+    if k_b >= 3:
+        price_ = price_ * 0.9
+
+    print(f"Общая стоимость билетов: ", price_)
